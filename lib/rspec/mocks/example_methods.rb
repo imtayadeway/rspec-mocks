@@ -404,7 +404,7 @@ module RSpec
         end
 
         RSpec::Mocks.configuration.on_declaring_verifying_double.each do |block|
-          block.call(ref.const)
+          block.call(ref)
         end
 
         declare_double(type, ref, *args)
