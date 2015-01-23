@@ -46,6 +46,17 @@ module RSpec
           end
         end
       end
+
+      describe "stubbing methods" do
+        context "without a default value" do
+          it "displays the diff message on a new line" do
+            d = double(:double)
+            allow(d).to receive(:foo).with(:bar)
+            o = fake_matcher(Object.new)
+            expect { d.foo(o) }.to fail_with(/\nDiff:/)
+          end
+        end
+      end
     end
   end
 end
